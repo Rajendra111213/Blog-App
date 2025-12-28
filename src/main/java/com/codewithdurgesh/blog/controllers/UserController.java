@@ -3,6 +3,8 @@ package com.codewithdurgesh.blog.controllers;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +27,25 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/users")
 public class UserController {
 	
+	Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	private UserService userService;
+	
+	
+    
 	
 	//POST - create user
 	@PostMapping("/")
 	public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto){
+		
+		logger.info("**** CreateUser() -> Execution Started****");
 		UserDto createUserDto = this.userService.createUser(userDto);
+		
+		logger.info("**** CreateUser() -> Execution Completed****");
 		return new ResponseEntity<>(createUserDto,HttpStatus.CREATED);
+		
+		
 		
 	}
 	
