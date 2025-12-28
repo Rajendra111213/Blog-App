@@ -13,13 +13,15 @@ import org.springframework.context.annotation.Bean;
 	@SpringBootApplication
 	public class BlogAppApisApplication extends SpringBootServletInitializer {
 
-	    @Override
-	    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-	        return builder.sources(BlogAppApisApplication.class);
-	    }
+	   
 	
 	    public static void main(String[] args) {
 	        SpringApplication.run(BlogAppApisApplication.class, args);
+	    }
+	    
+	    @Override
+	    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+	        return builder.sources(BlogAppApisApplication.class);
 	    }
 
 	
